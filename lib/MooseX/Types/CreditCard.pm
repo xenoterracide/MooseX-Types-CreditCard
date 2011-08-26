@@ -20,20 +20,9 @@ subtype CreditCard,
 coerce CreditCard,
 	from Str,
 	via {
-		my $cc_regex
-			=
-'^
-([[:digit:]]{4})
-[ -]?
-([[:digit:]]{4})
-[ -]?
-([[:digit:]]{4})
-[ -]?
-([[:digit:]]{4})
-$'
-			; # extract numbers from patterns like 4111-1111-1111-1111
-		my ( $int1, $int2, $int3, $int4 ) = $_ =~ /$cc_regex/gxms;
-		return $int1 . $int2 . $int3 . $int4;
+		my $int = $_;
+		$int =~ tr/0-9//cd;
+		return $int;
 	}
 	;
 
