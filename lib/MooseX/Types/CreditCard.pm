@@ -13,7 +13,7 @@ use Business::CreditCard;
 
 subtype CreditCard,
 	as Int,
-	where { validate($_) },
+	where { length($_) <= 20 && validate($_)  },
 	message {'"'. $_ . '" is not a valid credit card number' }
 	;
 
