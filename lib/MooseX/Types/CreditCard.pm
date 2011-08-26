@@ -54,7 +54,7 @@ subtype CardSecurityCode,
 
 		has cvv2 => (
 			is  => 'ro',
-			isa => CreditCardSecurityCode,
+			isa => CardSecurityCode,
 		);
 
 		__PACKAGE__->meta->make_immutable;
