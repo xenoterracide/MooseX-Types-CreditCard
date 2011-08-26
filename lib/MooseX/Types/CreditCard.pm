@@ -14,7 +14,7 @@ use Business::CreditCard;
 subtype CreditCard,
 	as Int,
 	where { validate($_) },
-	message { $_ . ' is not a valid credit card number' }
+	message {'"'. $_ . '" is not a valid credit card number' }
 	;
 
 coerce CreditCard,
