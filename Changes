@@ -1,3 +1,5 @@
 Revision history for MooseX-Types-CreditCard
 {{$NEXT}}
-	-
+
+v0.1.0    2011-08-26
+	- initial release for review
