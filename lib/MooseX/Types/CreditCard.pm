@@ -15,7 +15,7 @@ subtype CreditCard,
 	as Str,
 	where {
 		length($_) <= 20
-		&& $_ =~ /^[0-9]+$/
+		&& $_ =~ /^[0-9]+$/xms
 		&& validate($_)
 	},
 	message {'"'. $_ . '" is not a valid credit card number' }
@@ -35,7 +35,7 @@ subtype CardSecurityCode,
 	where {
 		length $_ >= 3
 		&& length $_ <= 4
-		&& $_ =~ /^[0-9]+$/
+		&& $_ =~ /^[0-9]+$/xms
 	},
 	message { '"'
 		. $_
