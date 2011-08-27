@@ -12,8 +12,12 @@ use namespace::autoclean;
 use Business::CreditCard;
 
 subtype CreditCard,
-	as Int,
-	where { length($_) <= 20 && validate($_)  },
+	as Str,
+	where {
+		length($_) <= 20
+		&& $_ =~ /^[0-9]+$/
+		&& validate($_)
+	},
 	message {'"'. $_ . '" is not a valid credit card number' }
 	;
 
@@ -27,8 +31,12 @@ coerce CreditCard,
 	;
 
 subtype CardSecurityCode,
-	as Int,
-	where { length $_ >= 3 && length $_ <= 4 },
+	as Str,
+	where {
+		length $_ >= 3
+		&& length $_ <= 4
+		&& $_ =~ /^[0-9]+$/
+	},
 	message { '"'
 		. $_
 		. '" is not a valid credit card security code. Must be 3 or 4 digits'
@@ -75,7 +83,7 @@ This module provides types related to Credit Cards for weak validation.
 
 =item * C<CreditCard>
 
-Base Type: C<Int>
+Base Type: C<Str>
 
 It will validate that the number passed to it appears to be a
 valid credit card number. Please note that this does not mean that the
@@ -89,7 +97,7 @@ allowing for numbers like "4111-1111-1111-1111" to be passed.
 
 =item * C<CardSecurityCode>
 
-Base Type: C<Int>
+Base Type: C<Str>
 
 A Credit L<Card Security Code|http://wikipedia.org/wiki/Card_security_code> is
 a 3 or 4 digit number. This is also called CSC, CVV, CVC, and CID, depending
