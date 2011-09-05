@@ -15,6 +15,7 @@ subtype CreditCard,
 	as Str,
 	where {
 		length($_) <= 20
+		&& length $_ >= 12
 		&& $_ =~ /^[0-9]+$/xms
 		&& validate($_)
 	},
