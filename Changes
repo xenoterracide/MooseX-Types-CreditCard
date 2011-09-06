@@ -2,6 +2,9 @@ Revision history for MooseX-Types-CreditCard
 
 {{$NEXT}}
 
+v0.1.3    2011-09-06
+	- Check that length is greater than 11 for CC numbers
+
 v0.1.2    2011-08-26
 	- Change Types to Str because they aren't really numbers, they are codes
 
