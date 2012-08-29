@@ -1,6 +1,9 @@
-Revision history for MooseX-Types-CreditCard
+Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.001006  2012-08-29
+	- Lazy load Business::CreditCard
 
 0.001005  2012-05-16
 	- use NumericCode to validate data consists only of numbers
