@@ -8,16 +8,16 @@ use warnings;
 use MooseX::Types -declare => [ qw( CreditCard CardSecurityCode ) ];
 use MooseX::Types::Moose qw( Str Int );
 use MooseX::Types::Common::String 0.001005 qw( NumericCode );
+use Class::Load qw( load_class );
 use namespace::autoclean;
-
-use Business::CreditCard;
 
 subtype CreditCard,
 	as NumericCode,
 	where {
 		length($_) <= 20
 		&& length $_ >= 12
-		&& validate($_)
+		&& load_class('Business::CreditCard')
+		&& Business::CreditCard::validate($_)
 	},
 	message {'"'. $_ . '" is not a valid credit card number' }
 	;
