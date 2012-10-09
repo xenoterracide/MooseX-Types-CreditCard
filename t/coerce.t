@@ -6,11 +6,11 @@ use Test::More;
 {
 	package Credit;
 	use Moose;
-	use MooseX::Types::CreditCard qw( CreditCard );
+	use MooseX::Types::CreditCard qw( CardNumber );
 
 	has card => (
+		isa    => CardNumber,
 		is     => 'ro',
-		isa    => CreditCard,
 		coerce => 1,
 	);
 
