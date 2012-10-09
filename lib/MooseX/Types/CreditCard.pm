@@ -68,7 +68,7 @@ subtype CreditCard,
 	}, # just for backcompat
 	message {'"'. $_ . '" is not a valid credit card number' };
 
-coerce CreditCard, from Str,
+coerce CardNumber, from Str,
 	via {
 		my $int = $_;
 		$int =~ tr/0-9//cd;
