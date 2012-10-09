@@ -2,6 +2,13 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.002000  2012-10-09
+	- add CardExpiration
+	[DEPRECATED]
+	- CreditCard, use CardNumber instead
+		- change made to make names consistent, will prefix type names with
+		  Card
+
 0.001006  2012-08-29
 	- Lazy load Business::CreditCard
 
