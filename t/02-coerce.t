@@ -9,8 +9,8 @@ use Test::More;
 	use MooseX::Types::CreditCard qw( CreditCard );
 
 	has card => (
-		is => 'ro',
-		isa => CreditCard,
+		is     => 'ro',
+		isa    => CreditCard,
 		coerce => 1,
 	);
 

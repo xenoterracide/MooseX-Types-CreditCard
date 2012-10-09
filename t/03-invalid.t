@@ -10,8 +10,8 @@ use Test::Exception;
 	use MooseX::Types::CreditCard qw( CreditCard );
 
 	has card => (
-		is => 'ro',
 		isa => CreditCard,
+		is  => 'ro',
 	);
 
 	__PACKAGE__->meta->make_immutable;
