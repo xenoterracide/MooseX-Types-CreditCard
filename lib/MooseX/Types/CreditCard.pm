@@ -97,7 +97,7 @@ coerce CardExpiration, from HashRef,
 =head1 SYNOPSIS
 
 	{
-		package My::Object;
+		package My::CreditCard;
 		use Moose;
 		use MooseX::Types::CreditCard qw(
 			CardNumber
@@ -106,26 +106,26 @@ coerce CardExpiration, from HashRef,
 		);
 
 		has credit_card => (
-			coerce => 1,
+			isa    => CardNumber,
 			is     => 'ro',
-			isa    => CreditCard,
+			coerce => 1,
 		);
 
 		has cvv2 => (
-			is  => 'ro',
 			isa => CardSecurityCode,
+			is  => 'ro',
 		);
 
 		has expiration => (
 			isa    => CardExpiration,
+			is     => 'ro',
 			coerce => 1,
-			is     => 'ro'
 		);
 
 		__PACKAGE__->meta->make_immutable;
 	}
 
-	my $obj = My::Object->new({
+	my $obj = My::CreditCard->new({
 		credit_card => '4111111111111111',
 		cvv2        => '123',
 		expiration  => { month => 10, year => 2013 },
