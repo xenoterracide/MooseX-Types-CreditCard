@@ -62,8 +62,9 @@ subtype CardExpiration,
 subtype CreditCard,
 	as CardNumber,
 	where {
+		our @CARP_NOT = qw( Moose::Meta::TypeConstraint );
 		load_class('Carp');
-		Carp::carp 'DEPRECATED: use CardNumber instead';
+		Carp::carp 'DEPRECATED: use CardNumber instead of CreditCard Type';
 		1;
 	}, # just for backcompat
 	message {'"'. $_ . '" is not a valid credit card number' };
