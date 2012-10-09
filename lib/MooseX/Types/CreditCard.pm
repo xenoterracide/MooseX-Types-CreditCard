@@ -76,6 +76,14 @@ coerce CardNumber, from Str,
 	};
 	message {'"'. $_ . '" is not a valid credit card number' };
 
+coerce CreditCard, from Str,
+	via {
+		my $int = $_;
+		$int =~ tr/0-9//cd;
+		return $int;
+	};
+	message {'"'. $_ . '" is not a valid credit card number' };
+
 coerce CardExpiration, from HashRef,
 	via {
 		return load_class('DateTime')->last_day_of_month( %{ $_ } );
