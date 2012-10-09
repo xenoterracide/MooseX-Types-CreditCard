@@ -170,8 +170,6 @@ stored in the object.
 Coerce allows you to create the L<DateTime> object from a C<HashRef> by passing
 the keys C<month> and C<year>.
 
-=back
-
 =head1 SEE ALSO
 
 =over
