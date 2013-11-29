@@ -2,6 +2,10 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.002002  2013-11-29
+	- acknowledge hostgator
+	- remove namespace::autoclean dep, it doesn't make sense here
+
 0.002001  2013-11-29
 	- update copyright
 	- use Module::Runtime because Class::Load is being removed from Moose
