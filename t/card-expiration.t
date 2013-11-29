@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use Test::More;
 use Test::Fatal;
-use Class::Load 0.20 qw( load_class );
+use Module::Runtime 'use_module';
 
 {
 	package Credit;
@@ -18,7 +18,7 @@ use Class::Load 0.20 qw( load_class );
 	__PACKAGE__->meta->make_immutable;
 }
 
-my $now = load_class('DateTime')->now;
+my $now = use_module('DateTime')->now;
 my $exp = DateTime->last_day_of_month( month => 10, year => 2013);
 
 my $c1 = new_ok( Credit => [{ expiration => $exp }]);

@@ -13,18 +13,18 @@ use MooseX::Types -declare => [ qw(
 	CardExpiration
 ) ];
 
+use Module::Runtime                        qw( use_module      );
 use MooseX::Types::Moose                   qw( Str Int HashRef );
 use MooseX::Types::Common::String 0.001005 qw( NumericCode     );
 use MooseX::Types::DateTime ();
 
-use Class::Load 0.20 qw( load_class );
 
 subtype CardNumber,
 	as NumericCode,
 	where {
 		length($_) <= 20
 		&& length $_ >= 12
-		&& load_class('Business::CreditCard')
+		&& use_module('Business::CreditCard')
 		&& Business::CreditCard::validate($_)
 	},
 	message {'"'. $_ . '" is not a valid credit card number' };
@@ -48,7 +48,7 @@ subtype CardExpiration,
 		my ( $month, $year ) = ( $_->month, $_->year );
 
 		my $comparitor
-			= load_class('DateTime')
+			= use_module('DateTime')
 			->last_day_of_month( month => $month, year => $year )
 			;
 
@@ -63,7 +63,7 @@ subtype CreditCard,
 	as CardNumber,
 	where {
 		our @CARP_NOT = qw( Moose::Meta::TypeConstraint );
-		load_class('Carp');
+		use_module('Carp');
 		Carp::carp 'DEPRECATED: use CardNumber instead of CreditCard Type';
 		1;
 	}, # just for backcompat
@@ -87,7 +87,7 @@ coerce CreditCard, from Str,
 
 coerce CardExpiration, from HashRef,
 	via {
-		return load_class('DateTime')->last_day_of_month( %{ $_ } );
+		return use_module('DateTime')->last_day_of_month( %{ $_ } );
 	};
 
 1;
