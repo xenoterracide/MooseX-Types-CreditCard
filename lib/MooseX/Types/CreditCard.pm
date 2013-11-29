@@ -135,9 +135,7 @@ coerce CardExpiration, from HashRef,
 
 This module provides types related to Credit Cards for weak validation.
 
-=head1 TYPES
-
-=head2 CardNumber
+=type CardNumber
 
 B<Base Type:> C<Str>
 
@@ -151,7 +149,7 @@ defined in L<Business::CreditCard>.
 Enabling coerce will strip out any non C<0-9> characters from a string
 allowing for numbers like "4111-1111-1111-1111" to be passed.
 
-=head2 CardSecurityCode
+=type CardSecurityCode
 
 B<Base Type:> C<Str>
 
@@ -159,7 +157,7 @@ A Credit L<Card Security Code|http://wikipedia.org/wiki/Card_security_code> is
 a 3 or 4 digit number. This is also called CSC, CVV, CVC, and CID, depending
 on the issuing vendor.
 
-=head2 CardExpiration
+=type head2 CardExpiration
 
 B<Base Type:> C<DateTime>
 
