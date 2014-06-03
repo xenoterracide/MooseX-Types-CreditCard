@@ -2,6 +2,11 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.002003  2014-06-02
+
+0.002003  2014-06-02
+	- update to using Author Bundle XENO and get TravisCI working
+
 0.002002  2013-11-29
 	- acknowledge hostgator
 	- remove namespace::autoclean dep, it doesn't make sense here
